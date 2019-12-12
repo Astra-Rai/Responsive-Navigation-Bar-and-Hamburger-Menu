@@ -1,0 +1,168 @@
+
+/* universal selector) setall elements to have zero margins and zero padding, thus making them look the same in all browsers */
+/* box-sizing property allows us to include the padding and border in an element's total width and height. */
+* {
+    box-sizing: border-box;
+}
+/* remove all margin and padding from the body*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.navbar {
+
+    /* use flexbox to have nav li elements align side by side */
+    display: flex;
+    position: relative;
+    
+    /*justify content w/space between to seperate elements as far as possible*/
+    justify-content: space-between;
+    
+    /* align items in the center */
+    align-items: center;
+    
+    /* changed background color of navigation bar to grey/black*/
+    background-color: #333;
+    
+    /* change font color to white*/
+    color: #fff;
+}
+
+.brand-title{
+
+    /* increased font-size of text "Brand Title in navigation bar" */
+    font-size: 1.5rem;
+    
+    /* Moves text "Brand Title" from end of left margin, centers text */
+    margin: .5rem;
+}
+
+.navbar-links ul {
+  
+    /* moves ul li items side by side instead of a verticle list */
+    display: flex;
+
+    /*remove all of the normal styling*/
+  
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+
+    /* remove dots that come before li text  */
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block; 
+    /* remove lines under li text */
+    text-decoration: none;
+    /* font color white*/
+    color: #fff;
+    /*creates space to left,right, top, bottom of each element*/
+    padding: 1rem;
+    /* display block takes up the whole width*/
+}
+
+.navbar-links li:hover {
+
+    background-color: #555;
+}
+
+
+/* forces toggle button to be on right aligned */
+.toggle-button{
+    position: absolute;
+    /* pushes toggle button from being right at top of the screen*/
+    top: .75rem;
+    /* pushes toggle 1rem from right side of screen */
+    right: 1rem;
+    /* we dont' want toggle button to display by default on larger screens, set to display: none */
+    /* display: flex; will show toggle hamburger once styled*/
+    
+    display: none;
+    /* change spans to colum, so that they are positioned vertically */
+    flex-direction: column;
+    /* add space in-between elements*/
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+/*style toggle button bars */
+.toggle-button .bar {
+
+    height: 3px;
+    /* width 100%
+    When you give an element a width of 100% in CSS, you're basically saying 
+    “Make this element's content area exactly equal to the explicit width of its parent — but only if its parent has an explicit width
+    */
+    width: 100%;
+    background-color: #fff;
+    /*rounding of corners */
+    border-radius: 10px;
+
+} 
+
+/*if our screen is less than 400px run the code below*/
+
+@media (max-width: 600px) {
+    /*if screen has a width less than 400px, display the toggle buttons */
+
+    .navbar {
+
+        /* column the flexible items are displayed vertically, as a column */
+        flex-direction: column;
+        /*flex-start	Items are positioned at the beginning of the container */
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+    
+    /* if screen has a width less than 400px, hide content in class .navbar-links */
+    .navbar-links {
+        display: none; 
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+    /*target the navbar-links class li element within in ul element*/
+    .navbar-links ul li {
+        /*center text within li element */
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        /*padding top bottom: .5rem, left right: 1rem*/
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display:flex;
+    }
+
+}
+
+/*
+Notes on flexbox:
+
+Use display: flex; to create a flex container.
+Use justify-content to define the horizontal alignment of items.
+Use align-items to define the vertical alignment of items.
+Use flex-direction if you need columns instead of rows.
+Use the row-reverse or column-reverse values to flip item order.
+Use order to customize the order of individual elements.
+Use align-self to vertically align individual items.
+Use flex to create flexible boxes that can stretch and shrink.
+
+Resource: https://internetingishard.com/html-and-css/flexbox/
+*/
